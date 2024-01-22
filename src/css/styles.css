@@ -77,16 +77,60 @@ img {
 }
 
 .loader {
-  left: 45%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
   width: 48px;
   height: 48px;
-  background: #fff;
   border-radius: 50%;
   position: relative;
-  animation: roll 1s ease-in-out infinite alternate;
+  animation: rotate 1s linear infinite
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+  border-color: #FF3D00;
+  animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
+  inset: 6px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
 }
 
 .loader:after {
@@ -96,16 +140,6 @@ img {
   border-radius: 50%;
   border: 5px solid;
   border-color: #4e75ff transparent;
-}
-
-@keyframes roll {
-  0% {
-    transform: translateX(-150%) rotate(0deg);
-  }
-
-  100% {
-    transform: translateX(150%) rotate(360deg);
-  }
 }
 
 .form {
