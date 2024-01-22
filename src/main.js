@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showLoader();
 
-    const BASE_URL = 'https://pixabay.com/api';
+    const BASE_URL = 'https://pixabay.com/api/';
     const KEY = '41927866-cfb01af7ede59fae11104cea9';
 
     fetch(`${BASE_URL}/?key=${KEY}&q=${searchInput}&image_type=photo&orientation=horizontal&safesearch=true`)
